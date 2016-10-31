@@ -1,0 +1,3 @@
+verify_verify_homepage:
+    path:     /
+    defaults: { _controller: VerifyVerifyBundle:Default:index }
