@@ -1,0 +1,35 @@
+{% extends "LoginLoginBundle:Default:index.html.twig" %}
+
+
+{% block stylesheet %}
+    <link href="{{ asset('bundles/loginlogin/css/custom_login.css') }}" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+    <div class="form" style="margin-top: 50px;">
+        {% if error is defined %}
+            <div class="alert-danger fade in">
+                <strong>{{error}}</strong>
+            </div>
+        {%endif%}
+
+        <div class="thumbnail"><img src="{{ asset('bundles/loginlogin/img/login_image.png') }}"/></div>
+
+        <form class="login-form" method="POST" action="{{ path('login_login_login') }}">
+            <input type="text" name="username" placeholder="username" required/>
+            <input type="password" name="password" placeholder="password" required/>
+            <div class='checkbox'>
+                <input name='remember' type="checkbox" id="checkbox" value='remember_me'/>
+                <label for="checkbox">Remember me</label>
+            </div>
+            <button type="submit">login</button>
+            <p class="message">Not registered? <a href="{{ path('login_login_signup') }}">Create an account</a></p>
+        </form>
+    </div>
+{% endblock %}
+
+
+{% block javascript %}
+    <script src="{{ asset('bundles/loginlogin/js/login.js') }}"></script>
+{% endblock %}

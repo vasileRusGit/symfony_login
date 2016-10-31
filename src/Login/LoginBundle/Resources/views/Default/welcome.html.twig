@@ -1,0 +1,46 @@
+
+{% extends "LoginLoginBundle:Default:index.html.twig" %}
+
+
+{% block stylesheet %}
+{% endblock %}
+
+
+{% block content %}
+    {% if status is not defined %}
+        <div class='container'>
+            <div class='row col-sm-12' style='float: right;'>
+                <div class='col-sm-10'></div>
+                <div class='col-sm-1'>
+                    {#                <h2>{{ name }}</h2>#}
+                </div>
+                <div style='padding-top:10px;' class='col-md-1'>
+                    <a href="{{ path('login_login_logout') }}">Log out</a>
+                </div>
+            </div>
+
+            <form method='POST' enctype='multipart/form-data' action='{{ path('login_login_welcome') }}'>
+                <h2 class='form-signin-heading'>Upload file</h2>
+                <input type='file' name='img' />
+                <button class='btn btn-primary' type='submit'>Upload</button>
+            </form>
+
+        </div>
+    {% elseif status =='success' %}
+        {% if uploadedUrl is defined %}
+            <img src="{{asset(uploadedUrl)}}"
+        {% endif %}
+    {% else %}
+        {% if message is defined %}
+            <div class='alert-danger fade in'>
+                <p>{{message}}
+            </div>
+        {% endif %}
+    {%endif%}
+
+{% endblock %}
+
+
+{% block javascript %}
+    <script src="{{ asset('bundles/loginlogin/js/login.js') }}"></script>
+{% endblock %}
