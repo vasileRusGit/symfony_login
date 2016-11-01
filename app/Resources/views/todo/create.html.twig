@@ -1,5 +1,29 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    Todo create
+    <h2 class='page-header'>Add Todo</h2>
+
+    {{form_start(form)}}
+    {{form_widget(form)}}
+    {{form_end(form)}}
+
+{#    <!-- Modal -->
+    <div class="modal fade" id="new_role" role="dialog" aria-labelledby="new_role-label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="new_role-label">Add new role</h4>
+                </div>
+                <div class="modal-body">
+{#                    {{ render(controller('AcmeBundle:Contact:newContactRole')) }}#}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="save_role">Save role</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->#}
+
 {% endblock %}

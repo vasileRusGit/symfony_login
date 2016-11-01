@@ -1,5 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    Todo details
+    <a class='btn btn-primary' href='/todo'>Back To Todos</a>
+    <br />
+    <h2 class='page-header'>{{todo.name}}</h2>
+    <ul class='list-group'>
+        <li class='list-group-item'><strong>Category : </strong>{{todo.category}}</li>
+        <li class='list-group-item'><strong>Priprity : </strong>{{todo.priority}}</li>
+        <li class='list-group-item'><strong>Due Date : </strong>{{todo.dueDate|date('F j, Y, g:i a')}}</li>
+        <br/>
+        <p>{{todo.description}}</p>
+    </ul>
 {% endblock %}

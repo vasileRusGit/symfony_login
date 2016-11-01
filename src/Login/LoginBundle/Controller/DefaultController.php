@@ -37,7 +37,7 @@ class DefaultController extends Controller {
                     $session->set('login', $login);
                 }
 
-                return $this->render('LoginLoginBundle:Default:welcome.html.twig', array('name' => $user->getUsername()));
+                return $this->render('base.html.twig', array('name' => $user->getUsername()));
             }
             return $this->render('LoginLoginBundle:Default:login.html.twig', array('error' => 'Invalid credentials!', 'user' => $username));
         } else {
@@ -52,7 +52,7 @@ class DefaultController extends Controller {
                 $user = $repository->findOneBy(array('username' => $username, 'password' => $password));
 
                 if ($user) {
-                    return $this->render('LoginLoginBundle:Default:welcome.html.twig', array('name' => $user->getUsername()));
+                    return $this->render('base.html.twig', array('name' => $user->getUsername()));
                 }
             }
         }

@@ -36,22 +36,38 @@
                         <li><a href="/todo">Home</a></li>
                         <li><a href="/todo/create">Add todo</a></li>
                     </ul>
+
+                    <div style='color:green; float: right; font-size:20px; margin-top:10px; margin-left: 20px;'>
+                        <a href="{{ path('login_login_logout') }}">Log out</a>
+                    </div>
+                    <div style='color:red; float: right; margin-top:15px; margin-left: 20px;'>
+                        |
+                    </div>
+                    <div style='color:green; float: right; margin-top:-10px; '>
+                        <h3>{{name}} </h3>
+                    </div>
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
 
         <div class="container">
-
             <div class="row">
                 <div class="col-md-12">
-                    {% block body %}{% endblock %}
-                </div>
+                    {%for flash_message in app.session.flashbag.get('notice') %}
+                        <div class='alert alert-info fade in'>{{flash_message}}</div>
+                    {% endfor %}
+
+                    {%for flash_message in app.session.flashbag.get('delete') %}
+                        <div class='alert alert-danger fade in'>{{flash_message}}</div>
+                    {% endfor %}
+
+                {% block body %}{% endblock %}
             </div>
+        </div>
+    </div><!-- /.container -->
 
-        </div><!-- /.container -->
 
-        
-        {% block javascripts %}{% endblock %}
-        
-    </body>
+{% block javascripts %}{% endblock %}
+
+</body>
 </html>
